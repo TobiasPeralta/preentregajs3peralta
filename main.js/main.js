@@ -1,55 +1,78 @@
-do {
-    let nombre;
-    do {
-        nombre = prompt(`Introduce tu nombre`);
-        if (nombre === '') {
-            alert('Introduce tu nombre por favor');
-        }
-    } while (nombre === ''); 
+let nombre = prompt('Ingrese su nombre');
+let edad = parseInt(prompt('Ingrese su edad'));
 
-    function saludo(nombre) {
-        alert(`Bienvenido ${nombre}, esto es un quiz de cultura general, escribe la respuesta o el nûmero de la respuesta que creas correcta!`);
-    }
+console.log(`Hola ${nombre}, bienvenido a Mini-Block-Buster, elije las peliculas que desees ver y compralas! (precios en pesos argentinos)`);
 
-    saludo(nombre);
+const peliculas = [
+    { nombre: 'La Tumba de las luciernagas', genero: 'drama', precio: 1000 },
+    { nombre: 'Terrifier', genero: 'terror', precio: 1500 },
+    { nombre: 'El Ladron de Orquideas', genero: 'drama', precio: 1200 },
+    { nombre: 'Star Wars: el imperio contraataca', genero: 'ficcion', precio: 1800 },
+    { nombre: 'Smile', genero: 'terror', precio: 800 },
+    { nombre: 'John Wick', genero: 'accion', precio: 1600 },
+    { nombre: 'Godzilla', genero: 'ficcion', precio: 1300 },
+    { nombre: 'El Show de Truman', genero: 'drama', precio: 1700 },
+    { nombre: 'Son como niños', genero: 'comedia', precio: 1400 },
+    { nombre: 'Hereditary', genero: 'terror', precio: 1500 },
+    { nombre: 'Duro de Matar', genero: 'accion', precio: 1900 },
+    { nombre: 'Scary movie 3', genero: 'comedia', precio: 1100 },
+    { nombre: 'Hellboy', genero: 'ficcion', precio: 2000 },
+    { nombre: 'Top Gun: Maverick', genero: 'accion', precio: 1600 },
+    { nombre: 'Ted', genero: 'comedia', precio: 1300 },
+];
 
-    let mensaje;
-    do {
-        mensaje = prompt(`Si deseas jugar escribe CONTINUAR, sino escribe SALIR`).toUpperCase();
+let peliculasSeleccionadas = [];
+
+function filtrarPorGenero(genero) {
+    return peliculas.filter(pelicula => pelicula.genero === genero);
+}
+
+function mostrarPeliculas(peliculas) {
+    peliculas.forEach((pelicula, index) => {
+        console.log(`${index + 1}. ${pelicula.nombre} - ${pelicula.genero} - $${pelicula.precio}`);
+    });
+}
+
+function seleccionarPeliculas() {
+    let seguirComprando = true;
+    
+    while (seguirComprando) {
+        let genero = prompt('Ingrese el género de películas que desea ver (drama, terror, ficcion, accion, comedia) o "salir" para terminar la compra:');
         
-        if (mensaje === 'SALIR') {
-            alert(`Gracias por jugar`);
+        if (genero.toLowerCase() === 'salir') {
+            seguirComprando = false;
+            break;
+        }
+        
+        let peliculasFiltradas = filtrarPorGenero(genero.toLowerCase());
+        
+        if (peliculasFiltradas.length === 0) {
+            console.log('No hay películas disponibles en ese género.');
         } else {
-            let pregunta1 = prompt('¿Cuál es la capital de Guatemala? \n 1. Madrid \n 2. Ciudad de Guatemala \n 3. Buenos Aires').toLocaleLowerCase();
-            if (pregunta1 !== 'ciudad de guatemala' && pregunta1!== '2') {
-                alert(`Vuelve a intentarlo, ${nombre}`);
+            console.log(`Películas disponibles en el género ${genero}:`);
+            mostrarPeliculas(peliculasFiltradas);
+            
+            let seleccion = parseInt(prompt('Ingrese el número de la película que desea comprar (o 0 para cancelar):'));
+            
+            if (seleccion > 0 && seleccion <= peliculasFiltradas.length) {
+                peliculasSeleccionadas.push(peliculasFiltradas[seleccion - 1]);
+                console.log(`Has seleccionado: ${peliculasFiltradas[seleccion - 1].nombre}`);
             } else {
-                alert(`¡Bien hecho ${nombre}!`);
-
-                let pregunta2 = prompt('¿Quién de los siguientes no juega en la NBA? \n 1. LeBron James \n 2. Jimmy Butler \n 3. Lionel Messi').toLocaleLowerCase();
-                if (pregunta2 !== 'lionel messi' && pregunta2 !== '3') {
-                    alert(`Vuelve a intentarlo, ${nombre}`);
-                } else {
-                    alert(`¡Bien hecho ${nombre}!`);
-
-                    let pregunta3 = prompt('¿Cuántos elementos contiene la tabla periódica? \n 1. 118 \n 2. 114 \n 3. 120');
-                    if (pregunta3 !== '118' && pregunta3 !=='1') {
-                        alert(`Vuelve a intentarlo ${nombre}`);
-                    } else {
-                        alert(`¡Bien hecho ${nombre}!`);
-
-                        let pregunta4 = prompt('¿Cuál de las siguientes películas no es de Tarantino? \n 1. Pulp Fiction \n 2. Inglourious Bastards \n 3. Taxi Driver').toLocaleLowerCase();
-                        if (pregunta4 !== 'taxi driver' && pregunta4 !== '3') {
-                            alert(`Vuelve a intentarlo ${nombre}`);
-                        } else {
-                            alert(`¡Felicidades ${nombre}, has completado todas las preguntas del quiz!`);
-                        }
-                    }
-                }
+                console.log('Selección inválida.');
             }
         }
-    } while (mensaje !== 'SALIR');
+    }
+}
 
-    alert(`Adiós ${nombre}`);
+function calcularTotal() {
+    return peliculasSeleccionadas.reduce((total, pelicula) => total + pelicula.precio, 0);
+}
 
-} while (true); 
+seleccionarPeliculas();
+
+let totalAPagar = calcularTotal();
+console.log(`Has seleccionado las siguientes películas:`);
+peliculasSeleccionadas.forEach(pelicula => {
+    console.log(`${pelicula.nombre} - $${pelicula.precio}`);
+});
+console.log(`Total a pagar: $${totalAPagar}`);
