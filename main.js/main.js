@@ -1,15 +1,11 @@
-function elegirPreguntaAleatoria(){
-    elegirPregunta(Math.floor(Math.random()))
-}
+const divPreguntas = document.getElementById("contenedor");
 
-function elegirPregunta (n) {
-    let base_preguntas = readText("base-preguntas.json")
-    let interprete_bp = JSON.parse(base_preguntas)
-    pregunta = interprete_bp [n]
-    select_id("numero").innerHTML = pregunta.numero
-    select_id("pregunta").innerHTML = pregunta.pregunta
-    select_id("btn1").innerHTML = pregunta.respuesta
-    select_id("btn2").innerHTML = pregunta.incorrecta1
-    select_id("btn3").innerHTML = pregunta.incorrecta2
-    select_id("btn4").innerHTML = pregunta.incorrecta3
-}
+preguntas.forEach((e) => {
+    divPreguntas.innerHTML += `
+    <div id= "${e.id}">
+        <p>${e.dificultad}</p>
+        <p>${e.pregunta}</p>
+        <img src="${e.imagen}" alt="Imagen relacionada con la pregunta">
+    </div>
+    `;
+});
