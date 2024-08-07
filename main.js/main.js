@@ -21,9 +21,9 @@ preguntas.forEach((e, index) => {
 document.querySelectorAll('.btn').forEach(button => {
     button.addEventListener('click', function() {
         if (this.getAttribute('data-correct') === 'true') {
-            this.classList.toggle('click'); // Cambia de clase si es correcto
+            this.classList.toggle('click'); 
         } else {
-            this.classList.toggle('clickear'); // Cambia de clase si es incorrecto
+            this.classList.toggle('clickear'); 
         }
     });
 });
