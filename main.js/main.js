@@ -1,31 +1,32 @@
 const divPreguntas = document.getElementById("contenedor");
 
-preguntas.forEach((e) => {
+preguntas.forEach((e, index) => {
     divPreguntas.innerHTML += `
-    <div id= "${e.id}">
-        <div class= "pregunta">
-            <p>${e.dificultad}</p>
-            <p>${e.pregunta}</p>
+    <div id="pregunta-${index}">
+        <div class="pregunta">
+            <p class= "dificultad">${e.dificultad}</p>
+            <p class="preguntas">${e.pregunta}</p>
             <img class="imagen" src="${e.imagen}" alt="Imagen pregunta">
             <div class="botones">
-            <button class= "btn" id= "btn1">${e.respuesta}</button>
-            <button class= "btn" id= "btn2">${e.incorrecta1}</button>
-            <button class= "btn" id= "btn3">${e.incorrecta2}</button>
-            <button class= "btn" id= "btn4">${e.incorrecta3}</button>
+                <button class="btn" data-correct="true">${e.respuesta}</button>
+                <button class="btn" data-correct="false">${e.incorrecta1}</button>
+                <button class="btn" data-correct="false">${e.incorrecta2}</button>
+                <button class="btn" data-correct="false">${e.incorrecta3}</button>
+            </div>
         </div>
     </div>
     `;
 });
 
-document.getElementById('btn1').addEventListener('click', function() {
-    this.classList.toggle('click');
+document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', function() {
+        if (this.getAttribute('data-correct') === 'true') {
+            this.classList.toggle('click'); // Cambia de clase si es correcto
+        } else {
+            this.classList.toggle('clickear'); // Cambia de clase si es incorrecto
+        }
+    });
 });
-document.getElementById('btn2').addEventListener('click', function() {
-    this.classList.toggle('clickear');
-});
-document.getElementById('btn3').addEventListener('click', function() {
-    this.classList.toggle('clickear');
-});
-document.getElementById('btn4').addEventListener('click', function() {
-    this.classList.toggle('clickear');
-});
+
+
+
