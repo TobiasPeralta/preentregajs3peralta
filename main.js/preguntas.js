@@ -16,5 +16,32 @@ const preguntas = [
         "incorrecta1": "4",   
         "incorrecta2": "7",  
         "incorrecta3": "2"
+    },
+    {
+        "dificultad": "Facil",
+        "pregunta": "En que año draftearon a LeBron James",
+        "imagen":"https://cdn.nba.com/manage/2020/11/lebron-stern-draft-night.jpg",
+        "respuesta": "2003",
+        "incorrecta1": "2001",   
+        "incorrecta2": "1999",  
+        "incorrecta3": "2002"
+    },
+    {
+        "dificultad": "Mediano",
+        "pregunta": "En que posicion draftearon a Michael Jordan",
+        "imagen":"https://www.chicagomag.com/wp-content/archive/Chicago-Magazine/December-2020/50-Moments-That-Shaped-Chicago-1970-2020/The-Bulls-draft-Michael-Jordan/C202012-50-Moments-That-Shaped-Chicago-02-Michael-Jordan-preview.jpg",
+        "respuesta": "3",
+        "incorrecta1": "4",   
+        "incorrecta2": "1",  
+        "incorrecta3": "2"
+    },
+    {
+    "dificultad": "Mediano",
+    "pregunta": "En cuales equipos jugo Russel Westbrook",
+    "imagen":"https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/3468.png&w=350&h=254",
+    "respuesta": "2003",
+    "incorrecta1": "2001",   
+    "incorrecta2": "1999",  
+    "incorrecta3": "2002"
     }
 ];

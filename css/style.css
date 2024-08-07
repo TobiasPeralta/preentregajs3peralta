@@ -1,3 +1,6 @@
+*{
+    padding: 0%;
+}
 body{
     padding: 0px;
     margin: 0px;
@@ -13,28 +16,9 @@ height: 97vh;
 justify-content: center;
 align-items: center;
 }
-.encabezado{
-    background-color: white;
-    min-width: 300px;
-    width: 70%;
-    padding: 10px;
-    border-radius: 10px;
-}
-.dificultad{
-    opacity: 0.3;
-    text-align: left;
-}
-.pregunta{
-    padding: 10px;
-}
-.btn{
-    background-color: white;
-    width: 60%;
-    padding: 10px;
-    margin: 5px;
-    border-radius: 10px;
-}
+
 .imagen{
+    object-fit: cover;
     height: 300px;
     width: 50%;
     border-radius: 10px;
@@ -55,4 +39,37 @@ align-items: center;
     font-size: 30px;
     padding-left: 10px;
     padding-right: 10px;
+}
+.pregunta{
+    box-sizing: border-box;
+    margin: 10px;
+    background-color: white;
+    border-radius: 10px;
+    
+}
+.btn{
+    background-color: white;
+    width: 60%;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 10px;
+}
+#btn1.click{
+    background-color: green;
+    color: white;
+}
+
+#btn2.clickear{
+    background-color: red;
+    color: white;
+}
+
+#btn3.clickear{
+    background-color: red;
+    color: white;
+}
+
+#btn4.clickear{
+    background-color: red;
+    color: white;
 }
